@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; WebVR Experience</title>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <video id="yosemite" crossorigin="anonymous" src="yosemite.mp4">
+        <video id="minion" crossorigin="anonymous" src="minion.mp4">
+        <img id="video-thumb" crossorigin="anonymous" src="http://www.kedke.gr/wp-content/themes/kedke-theme/img/livestreamkede.png">
+        <img id="game" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <img id="game-thumb" crossorigin="anonymous" src="https://cdn.brainpop.com/assets/images/btn_playgame.png">
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+
+        <script id="link" type="text/html">
+          <a-entity class="link"
+          geometry="primitive: plane; height: 1; width: 1"
+          material="shader: flat; src: ${thumb}"
+          event-set__1="_event: mouseenter; scale: 1.2 1.2 1"
+          event-set__2="_event: mouseleave; scale: 1 1 1"
+          sound="on: click; src: #click-sound"></a-entity>
+        </script>
+      </a-assets>
+
+      <a-entity id="links" layout="type: line; margin: 2" position="-1 2 -5">
+        <a-entity id="movie-link" template="src: #link" data-src="#minion" data-thumb="#video-thumb"></a-entity>
+        <a-entity id="game-link" template="src: #link" data-src="#game" data-thumb="#game-thumb"></a-entity>
+      </a-entity>
+
+      <a-entity id="play360" geometry="primitive: sphere; radius: 5000;
+                    segmentsWidth: 64; segmentsHeight: 64;"
+                    material="shader: flat; src: url(yosemite.mp4); stereoscopicType:RL"
+                    scale="-1 1 1" autoplay="false></a-entity>
+
+      <a-camera>
+        <a-cursor id="cursor" color="grey"></a-cursor>
+      </a-camera>
+
+    </a-scene>
+    <script src="index.js"></script>
+  </body>
+</html>
