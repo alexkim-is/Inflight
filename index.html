@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; WebVR Experience</title>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <video id="yosemite">
+        <video id="minion">
+        <audio id="click-sound"></audio>
+        <img id="video-thumb" crossorigin="anonymous" src="http://www.kedke.gr/wp-content/themes/kedke-theme/img/livestreamkede.png">
+        <img id="game" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <img id="game-thumb" crossorigin="anonymous" src="https://cdn.brainpop.com/assets/images/btn_playgame.png">
+        <img id="menu-thumb" src="http://www.clker.com/cliparts/q/M/G/N/M/D/main-menu-md.png">
+        <script id="link" type="text/html">
+          <a-entity class="link" geometry="primitive: plane; height: 1; width: 1"
+             material="src: ${thumb}" sound="on: click; src: #click-sound"></a-entity>
+        </script>
+      </a-assets>
+
+      <a-entity id="welcome" position="-4 0 -7" bmfont-text=""></a-entity>
+
+      <a-entity id="links" class="front" layout="type: line; margin: 1.6" position="-2 2.4 -5">
+        <a-entity id="movie-link" class="front" template="src: #link" data-src="#minion" data-thumb="#video-thumb"></a-entity>
+        <a-entity id="menu-link" template="src: #link" data-src="#menu" data-thumb="#menu-thumb"></a-entity>
+        <a-entity id="game-link" template="src: #link" data-src="#game" data-thumb="#game-thumb"></a-entity>
+      </a-entity>
+
+      <a-entity id="play360" class="menu insession" geometry="primitive: sphere; radius: 5000;
+                          segmentsWidth: 64; segmentsHeight: 64;"
+                          material="shader: flat; src: url(yosemite.mp4); stereoscopicType:RL"
+                          scale="-1 1 1" autoplay="false"></a-entity>
+
+      <a-camera>
+        <a-cursor id="cursor" cursor="fuse: true; timeout:100" color="grey"></a-entity>
+      </a-camera>
+
+    </a-scene>
+    <script src="index.js"></script>
+  </body>
+</html>
