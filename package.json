@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/alexkim-is/WebVR/issues"
   },
-  "homepage": "https://github.com/alexkim-is/WebVR#readme"
+  "homepage": "https://github.com/alexkim-is/WebVR#readme",
+  "dependencies": {
+    "aframe": "^0.4.1"
+  },
+  "devDependencies": {
+    "aframe-bmfont-text-component": "^0.1.4"
+  }
 }
