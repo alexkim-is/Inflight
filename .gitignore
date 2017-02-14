@@ -1,3 +1,7 @@
 *.mp4
 
 node_modules/
+
+.eslintrc
+.htmlhintrc
+.stylelintrc
