@@ -1,3 +1,6 @@
+
+// const redraw = require(../build/bundle)
+
 const $defaultVideo = document.getElementById('default-video')
 const $gameWall = document.getElementById('gamewall')
 
@@ -69,6 +72,14 @@ $gameLink.addEventListener('fusing', () => {
     $gameWall.setAttribute('visible', true)
   }
 })
+
+// $gameWall.addEventListener('fusing', () => {
+//   window.setTimeout(buttonAction, 1000)
+//   function buttonAction() {
+//    redraw()
+//   }
+// })
+
 
 //WELCOME MESSAGE AND OTHER TEXT FIELDS
 const $welcome = document.getElementById('welcome')

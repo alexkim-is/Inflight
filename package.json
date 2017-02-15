@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "watch": "nodemon .",
-    "bundle": "browserify -t babelify game/app.js -o game/bundle.js",
-    "bundle:watch": "watchify -v -t babelify game/app.js -o game/bundle.js"
+    "bundle": "browserify -t babelify game/app.js -o build/bundle.js",
+    "bundle:watch": "watchify -v -t babelify game/app.js -o build/bundle.js"
   },
   "repository": {
     "type": "git",

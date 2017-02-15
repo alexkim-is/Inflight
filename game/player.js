@@ -23,8 +23,7 @@ const Player = ({ xposition, yposition }) => {
   const props = {
     left: xposition + 'px',
     top: yposition + 'px',
-    position: 'absolute',
-    backgroundColor: 'red'
+    position: 'absolute'
   }
 
   return (
