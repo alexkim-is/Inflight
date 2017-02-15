@@ -12,11 +12,15 @@
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="http://vjs.zencdn.net/5.16.0/video-js.css">
   </head>
   <body>
     <a-scene debug>
       <a-assets>
-        <video id="yosemite" crossorigin="anonymous" src="files/yosemite.mp4">
+        <video id="yosemite" class="video-js" controls preload="auto" crossorigin="anonymous"
+              data-setup="{}">
+            <source src="files/yosemite.mp4" type='video/mp4'>
+        </video>
         <video id="minion" crossorigin="anonymous" src="files/minion.mp4">
         <img id="video-thumb" crossorigin="anonymous" src="files/xigogykKT.png">
         <img id="game-thumb" crossorigin="anonymous" src="files/btn_playgame.png">
@@ -35,7 +39,7 @@
       </a-entity>
 
       <a-entity id="welcome" position="-2 0 -7" bmfont-text=""></a-entity>
-      <a-plane id="gamewall" src="" position="3 2 -4" visible="false"></a-plane>
+      <a-plane id="gamewall" src="https://goo.gl/ZqpuKs" position="3 2 -4" visible="false"></a-plane>
 
       <a-entity id="videoentity">
         <a-videosphere id="default-video" class="nowplaying" src="#yosemite" rotation="0 270 0"></a-videosphere>
@@ -50,5 +54,7 @@
       </a-entity>
     </a-scene>
     <script src="index.js"></script>
+    <script src="http://vjs.zencdn.net/5.16.0/video.js"></script>
+
   </body>
 </html>

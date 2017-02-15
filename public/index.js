@@ -1,4 +1,5 @@
 const $defaultVideo = document.getElementById('default-video')
+const $gameWall = document.getElementById('gamewall')
 
 //Main Menu Animation//
 const $movieLink = document.querySelector('#movie-link')
@@ -65,6 +66,7 @@ $gameLink.addEventListener('fusing', () => {
     $movieController.setAttribute('visible', false)
     $defaultController.setAttribute('visible', false)
     $welcome.setAttribute('visible', false)
+    $gameWall.setAttribute('visible', true)
   }
 })
 
