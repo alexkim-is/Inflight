@@ -1,5 +1,8 @@
-
-// const redraw = require(../build/bundle)
+const React = require('react')
+const ReactDOM = require('react-dom')
+const Player = require('./game//Player')
+const Board = require('./game/Board')
+const store = require('./game/store')
 
 const $defaultVideo = document.getElementById('default-video')
 const $gameWall = document.getElementById('gamewall')
@@ -17,6 +20,10 @@ $gameLink.addEventListener('mouseenter', function () {
 $menuLink.addEventListener('mouseenter', function () {
   $menuLink.setAttribute('scale', {x:1.5, y:1.5, z:1.5})
 })
+$gameWall.addEventListener('mouseenter', function () {
+  $menuLink.setAttribute('scale', {x:1.5, y:1.5, z:1.5})
+})
+
 $movieLink.addEventListener('mouseleave', function () {
   $movieLink.setAttribute('scale', {x:1, y:1, z:1})
 })
@@ -26,16 +33,24 @@ $gameLink.addEventListener('mouseleave', function () {
 $menuLink.addEventListener('mouseleave', function () {
   $menuLink.setAttribute('scale', {x:1, y:1, z:1})
 })
+$gameWall.addEventListener('mouseleave', function () {
+  $menuLink.setAttribute('scale', {x:1, y:1, z:1})
+})
 
 
 //Application/background Change
 const minion = '#minion'
 const yosemite = '#yosemite'
 const gameroom = '#game-room'
+const $welcome = document.getElementById('welcome')
 const $controllers = document.getElementById('controllers')
 const $defaultController = document.getElementById('default-controller')
 const $movieController = document.createElement('a-entity')
 $controllers.appendChild($movieController)
+
+//WELCOME MESSAGE AND OTHER TEXT FIELDS
+$welcome.setAttribute('bmfont-text', 'text: Hi there. Welcome to WebVR!\n Please move cursor to choose; color: yellow')
+$welcome.setAttribute('scale', {x:3, y:3, z:0})
 
 function renderNewVideo(item) {
   $defaultVideo.setAttribute('src', `${item}`)
@@ -73,15 +88,29 @@ $gameLink.addEventListener('fusing', () => {
   }
 })
 
-// $gameWall.addEventListener('fusing', () => {
-//   window.setTimeout(buttonAction, 1000)
-//   function buttonAction() {
-//    redraw()
-//   }
-// })
 
+$gameWall.addEventListener('fusing', () => {
+  window.setTimeout(buttonAction, 1000)
 
-//WELCOME MESSAGE AND OTHER TEXT FIELDS
-const $welcome = document.getElementById('welcome')
-$welcome.setAttribute('bmfont-text', 'text: Hi there. Welcome to WebVR!\n Please move cursor to choose; color: yellow')
-$welcome.setAttribute('scale', {x:3, y:3, z:0})
+  function buttonAction() {
+    const App = ({ state, dispatch }) => {
+      const { xposition, yposition} = state
+      return (
+        React.createElement('div', null, React.createElement(Board, { xposition, yposition, dispatch, Player}),
+          React.createElement('div', null, React.createElement(Player, { xposition, yposition, dispatch}))
+        )
+      )
+    }
+
+    const redraw = () => {
+      const state = store.getState()
+      const { dispatch } = store
+      ReactDOM.render(
+        React.createElement(App, {state, dispatch}),
+        document.getElementById('App')
+      )
+    }
+    store.subscribe(redraw)
+    redraw()
+  }
+})

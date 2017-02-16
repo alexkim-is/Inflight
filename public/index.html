@@ -11,11 +11,14 @@
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+    <!-- <script src="https://rawgit.com/mayognaise/aframe-html-shader/master/dist/aframe-html-shader.min.js"></script> -->
     <link rel="stylesheet" type="text/css" href="styles.css">
+
   </head>
   <body>
-    <a-scene debug>
+    <a-scene visible>
       <a-assets>
+
         <video id="yosemite" crossorigin="anonymous" src="files/yosemite.mp4">
         <video id="minion" crossorigin="anonymous" src="files/minion.mp4">
         <img id="video-thumb" crossorigin="anonymous" src="files/xigogykKT.png">
@@ -35,22 +38,24 @@
         <a-entity id="game-link" template="src: #link" data-thumb="#game-thumb"></a-entity>
       </a-entity>
 
-      <a-entity id="welcome" position="-2 0 -7" bmfont-text=""></a-entity>
 
-      <a-plane id="gamewall" src= "#gamewall-thumb" geometry="height: 5; width: 7" rotation="0 -90 0"position="6 1 -4" visible="false"></a-plane>
+      <a-entity id="welcome" position="-2 0 -7" visible="true" bmfont-text=""></a-entity>
+      <a-plane id="gamewall" geometry="primitive: plane; height: 5; width: 7"
+                material="src: #game-room; color: green; opacity: 0.6" rotation="0 -90 0"position="6 1 -4" visible="false"></a-plane>
 
       <a-entity id="videoentity">
         <a-videosphere id="default-video" class="nowplaying" src="#yosemite" rotation="0 270 0"></a-videosphere>
       </a-entity>
 
-      <a-camera>
-        <a-cursor id="cursor" cursor="fuse: true" color="grey"></a-entity>
-      </a-camera>
-
       <a-entity id="controllers">
         <a-entity video-controls="src: #yosemite" id="default-controller"></a-entity>
       </a-entity>
+
+      <a-camera id="camera">
+        <a-cursor id="cursor" cursor="fuse: true" color="grey"></a-entity></a-camera>
+
     </a-scene>
-    <script src="index.js"></script>
+    <div id="App"></div>
+    <script src="bundle.js"></script>
   </body>
 </html>
