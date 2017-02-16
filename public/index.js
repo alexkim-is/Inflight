@@ -1,9 +1,6 @@
-const $videoentity = document.getElementById('videoentity')
 const $defaultVideo = document.getElementById('default-video')
 
-
 //Main Menu Animation//
-const $links = document.getElementById('links')
 const $movieLink = document.querySelector('#movie-link')
 const $gameLink = document.querySelector('#game-link')
 const $menuLink = document.querySelector('#menu-link')

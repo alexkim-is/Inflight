@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "watch": "nodemon ."
+    "watch": "nodemon .",
+    "bundle": "browserify -t babelify game/game.js -o game/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
     "aframe": "^0.4.1",
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "redux": "^3.6.0",
     "request": "^2.79.0"
   },
   "devDependencies": {
