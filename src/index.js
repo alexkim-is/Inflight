@@ -6,8 +6,10 @@ const store = require('./game/store')
 
 const $defaultVideo = document.getElementById('default-video')
 const $gameWall = document.getElementById('gamewall')
+const $scene = document.getElementById('first')
 
 //Main Menu Animation//
+const $links = document.querySelector('#links')
 const $movieLink = document.querySelector('#movie-link')
 const $gameLink = document.querySelector('#game-link')
 const $menuLink = document.querySelector('#menu-link')
@@ -93,24 +95,12 @@ $gameWall.addEventListener('fusing', () => {
   window.setTimeout(buttonAction, 1000)
 
   function buttonAction() {
-    const App = ({ state, dispatch }) => {
-      const { xposition, yposition} = state
-      return (
-        React.createElement('div', null, React.createElement(Board, { xposition, yposition, dispatch, Player}),
-          React.createElement('div', null, React.createElement(Player, { xposition, yposition, dispatch}))
-        )
-      )
-    }
-
-    const redraw = () => {
-      const state = store.getState()
-      const { dispatch } = store
-      ReactDOM.render(
-        React.createElement(App, {state, dispatch}),
-        document.getElementById('App')
-      )
-    }
-    store.subscribe(redraw)
-    redraw()
+    const $app = document.getElementById('App')
+    $links.setAttribute('visible', false)
+    $scene.setAttribute('visible', false)
+    const $gameScreen = document.createElement('img')
+    $gameScreen.setAttribute('src', 'https://goo.gl/ZIkDGA')
+    $gameScreen.setAttribute('height', '200px')
+    $app.appendChild($gameScreen)
   }
 })

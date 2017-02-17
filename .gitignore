@@ -1,6 +1,4 @@
 *.mp4
-*.png
-*.jpeg
 
 node_modules/
 

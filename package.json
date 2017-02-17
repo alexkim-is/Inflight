@@ -1,12 +1,17 @@
 {
   "name": "WebVR",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.9.2"
+  },
+  
   "description": "",
   "main": "server.js",
   "scripts": {
     "watch": "nodemon .",
-    "bundle": "browserify -t babelify src/game/app.js -o src/game/appbundle.js",
-    "bundle:watch": "watchify -v -t babelify src/index.js -o public/bundle.js"
+    "bundle": "browserify -t babelify src/game/app.js -o src/game/bundle.js",
+    "bundle:watch": "watchify -v -t babelify src/index.js -o public/bundle.js",
+    "watch:dev": "run-p watch bundle:watch"
   },
   "repository": {
     "type": "git",
@@ -21,6 +26,7 @@
   "homepage": "https://github.com/alexkim-is/WebVR#readme",
   "dependencies": {
     "aframe": "^0.4.1",
+    "aframe-react": "^3.4.1",
     "babel-plugin-transform-react-jsx": "^6.23.0",
     "body-parser": "^1.16.0",
     "browserify": "^14.1.0",
