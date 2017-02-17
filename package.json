@@ -4,14 +4,16 @@
   "engines": {
     "node": "6.9.2"
   },
-  
+
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "node .",
     "watch": "nodemon .",
-    "bundle": "browserify -t babelify src/game/app.js -o src/game/bundle.js",
+    "bundle": "browserify -t babelify src/index.js -o public/bundle.js",
     "bundle:watch": "watchify -v -t babelify src/index.js -o public/bundle.js",
-    "watch:dev": "run-p watch bundle:watch"
+    "watch:dev": "run-p watch bundle:watch",
+    "postinstall": "npm run bundle"
   },
   "repository": {
     "type": "git",
