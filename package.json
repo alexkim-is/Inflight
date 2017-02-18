@@ -4,7 +4,6 @@
   "engines": {
     "node": "6.9.2"
   },
-
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -40,6 +39,7 @@
     "request": "^2.79.0"
   },
   "devDependencies": {
+    "babelify": "^7.3.0",
     "nodemon": "^1.11.0",
     "watchify": "^3.9.0"
   }
