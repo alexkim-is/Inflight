@@ -1,6 +1,6 @@
 const React = require('react')
 
-const Board = () => {
+const board = () => {
   const props = {
     width: 400,
     height: 400,
@@ -14,4 +14,4 @@ const Board = () => {
   )
 }
 
-module.exports = Board
+module.exports = board

@@ -1,7 +1,7 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-const Player = require('./game//Player')
-const Board = require('./game/Board')
+const Player = require('./game//player')
+const Board = require('./game/board')
 const store = require('./game/store')
 
 const $defaultVideo = document.getElementById('default-video')

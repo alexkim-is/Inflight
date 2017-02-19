@@ -1,14 +1,14 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-const Player = require('./Player')
-const Board = require('./Board')
+const player = require('./player')
+const Board = require('./board')
 const store = require('./store')
 
 const App = ({ state, dispatch }) => {
   const { xposition, yposition} = state
   return (
-    React.createElement('div', null, React.createElement(Board, { xposition, yposition, dispatch, Player}),
-      React.createElement('div', null, React.createElement(Player, { xposition, yposition, dispatch}))
+    React.createElement('div', null, React.createElement(board, { xposition, yposition, dispatch, Player}),
+      React.createElement('div', null, React.createElement(player, { xposition, yposition, dispatch}))
     )
   )
 }

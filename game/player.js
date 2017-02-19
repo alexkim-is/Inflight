@@ -19,7 +19,7 @@ document.addEventListener('keydown', (event) => {
   }
 })
 
-const Player = ({ xposition, yposition }) => {
+const player = ({ xposition, yposition }) => {
   const props = {
     left: xposition + 'px',
     top: yposition + 'px',
@@ -36,4 +36,4 @@ const Player = ({ xposition, yposition }) => {
     )
 }
 
-module.exports = Player
+module.exports = player
