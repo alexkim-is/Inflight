@@ -9,10 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon .",
-    "bundle": "browserify -t babelify src/index.js -o public/bundle.js",
-    "bundle:watch": "watchify -v -t babelify src/index.js -o public/bundle.js",
-    "watch:dev": "run-p watch bundle:watch",
-    "postinstall": "npm run bundle"
+    "postinstall": "npm run start"
   },
   "repository": {
     "type": "git",
