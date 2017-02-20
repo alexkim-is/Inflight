@@ -7,9 +7,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node .",
     "watch": "nodemon .",
-    "postinstall": "npm run start"
+    "bundle": "browserify -t babelify src/ -o public/bundle.js",
+    "bundle:watch": "watchify -v -t babelify src/ -o public/bundle.js",
+    "watch:dev": "npm-run-all -p watch bundle:watch",
+    "postinstall": "npm run bundle"
   },
   "repository": {
     "type": "git",
