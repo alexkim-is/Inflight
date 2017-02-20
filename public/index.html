@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>360&deg; WebVR Experience</title>
-
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
@@ -12,10 +11,11 @@
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+      <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <a-scene id="first">
+    <a-scene>
       <a-assets>
         <video id="yosemite" crossorigin="anonymous" src="files/yosemite.mp4">
         <video id="minion" crossorigin="anonymous" src="files/minion.mp4">
@@ -29,29 +29,30 @@
                     material="src: ${thumb}; opacity: 0.8" sound="on: click; src: #click-sound"></a-entity>
         </script>
       </a-assets>
-
-      <a-entity id="links" class="front" layout="type: line; margin: 2.2" position="-2 2.4 -5" visible="true">
+      <a-entity id="links" class="front" layout="type: line; margin: 2.2" position="-2 3 -5" visible="true">
         <a-entity id="movie-link" template="src: #link" data-src="#minion" data-thumb="#video-thumb"></a-entity>
         <a-entity id="menu-link" template="src: #link" data-thumb="#menu-thumb"></a-entity>
         <a-entity id="game-link" template="src: #link" data-thumb="#game-thumb"></a-entity>
       </a-entity>
-
       <a-entity id="welcome" position="-2 0 -7" visible="true" bmfont-text=""></a-entity>
-      <a-plane id="gamewall" geometry="primitive: plane; height: 5; width: 7"
-                material="src: #game-room; color: green; opacity: 0.6" rotation="0 -90 0"position="6 1 -4" visible="false"></a-plane>
-
+      <a-entity id="gamelinks">
+        <a-plane id="gamewall" class="game" visible="false" geometry="primitive: plane; height: 4; width: 6"
+                  material="shader: gif; src: url(http://i.imgur.com/Idm6I.gif); opacity: 0.8" rotation="0 -60 0"position="7 1 -5" visible="false"></a-plane>
+        <a-plane id="gamewall2" class="game" visible="false" geometry="primitive: plane; height: 4; width: 6"
+                  material="shader: gif; src: url(https://media.giphy.com/media/13eirb4In7z4is/giphy.gif); opacity: 0.8" rotation="0 60 0"position="-7 1 -5" visible="false"></a-plane>
+        <a-plane id="gamewall3" class="game" visible="false" geometry="primitive: plane; height: 4; width: 6"
+                  material="shader: gif; src: url(http://i.imgur.com/FEw161J.gif); opacity: 0.8" rotation="-35 0 0"position="0 -1 -7" visible="false"></a-plane>
+      </a-entity>
       <a-entity id="videoentity">
-        <a-videosphere id="default-video" src="#minion" rotation="0 270 0"></a-videosphere>
+        <a-videosphere id="default-video" src="#game-room" rotation="0 270 0"></a-videosphere>
       </a-entity>
       <a-entity id="controllers">
-        <a-entity video-controls="src: #yosemite" id="default-controller"></a-entity>
+        <a-entity video-controls="src: #yosemite" id="default-controller" position="0 -2 0"></a-entity>
       </a-entity>
       <a-camera id="camera">
         <a-cursor id="cursor" cursor="fuse: true" color="grey"></a-entity>
       </a-camera>
     </a-scene>
-
-    <div id="App"><p>hello</p></div>
     <script src="bundle.js"></script>
   </body>
 </html>
